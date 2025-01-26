@@ -8,6 +8,52 @@ document.addEventListener('DOMContentLoaded', function() {
         return texto.split('*').length - 1;
     }
 
+    // Função para atualizar sentença
+    function atualizarSentenca() {
+        for(let linha = 1; linha <= 4; linha++) {
+            const tribunal1Valor = document.querySelector(`#tribunal-1 .linha:nth-child(${linha})`).textContent;
+            const tribunal2Valor = document.querySelector(`#tribunal-2 .linha:nth-child(${linha})`).textContent;
+            const totalAsteriscos = contarAsteriscos(tribunal1Valor) + contarAsteriscos(tribunal2Valor);
+            const sentencaLinha = document.querySelector(`#sentenca-1 .linha:nth-child(${linha})`);
+            sentencaLinha.textContent = totalAsteriscos % 2 === 0 ? '**' : '*';
+        }
+    }
+
+    // Função para atualizar juiz
+    function atualizarJuiz() {
+        for(let linha = 1; linha <= 4; linha++) {
+            const tribunal1Valor = document.querySelector(`#tribunal-1 .linha:nth-child(${linha})`).textContent;
+            const tribunal2Valor = document.querySelector(`#tribunal-2 .linha:nth-child(${linha})`).textContent;
+            const totalAsteriscos = contarAsteriscos(tribunal1Valor) + contarAsteriscos(tribunal2Valor);
+            const juizLinha = document.querySelector(`#juiz-1 .linha:nth-child(${linha})`);
+            juizLinha.textContent = totalAsteriscos % 2 === 0 ? '**' : '*';
+        }
+    }
+
+    // Função para atualizar tribunal
+    function atualizarTribunal() {
+        // Tribunal 1 (Sobrinhas 1 e 2)
+        for(let linha = 1; linha <= 4; linha++) {
+            const sobrinha1Valor = document.querySelector(`#sobrinha-1 .linha:nth-child(${linha})`).textContent;
+            const sobrinha2Valor = document.querySelector(`#sobrinha-2 .linha:nth-child(${linha})`).textContent;
+            const totalAsteriscos = contarAsteriscos(sobrinha1Valor) + contarAsteriscos(sobrinha2Valor);
+            const tribunal1Linha = document.querySelector(`#tribunal-1 .linha:nth-child(${linha})`);
+            tribunal1Linha.textContent = totalAsteriscos % 2 === 0 ? '**' : '*';
+        }
+
+        // Tribunal 2 (Sobrinhas 3 e 4)
+        for(let linha = 1; linha <= 4; linha++) {
+            const sobrinha3Valor = document.querySelector(`#sobrinha-3 .linha:nth-child(${linha})`).textContent;
+            const sobrinha4Valor = document.querySelector(`#sobrinha-4 .linha:nth-child(${linha})`).textContent;
+            const totalAsteriscos = contarAsteriscos(sobrinha3Valor) + contarAsteriscos(sobrinha4Valor);
+            const tribunal2Linha = document.querySelector(`#tribunal-2 .linha:nth-child(${linha})`);
+            tribunal2Linha.textContent = totalAsteriscos % 2 === 0 ? '**' : '*';
+        }
+
+        // Atualiza o juiz após atualizar o tribunal
+        atualizarJuiz();
+    }
+
     // Função para atualizar sobrinhas
     function atualizarSobrinhas() {
         // Sobrinha 1 (Mãe 1 e Mãe 2)
@@ -45,6 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const sobrinha4Linha = document.querySelector(`#sobrinha-4 .linha:nth-child(${linha})`);
             sobrinha4Linha.textContent = totalAsteriscos % 2 === 0 ? '**' : '*';
         }
+
+        // Atualiza o tribunal após atualizar as sobrinhas
+        atualizarTribunal();
     }
 
     // Adiciona o evento de clique para cada linha das mães
@@ -66,11 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const filhaCorrespondente = document.querySelector(`#filha-${linhaNumero} .linha[data-linha="${maeNumero}"]`);
             filhaCorrespondente.textContent = this.textContent;
 
-            // Atualiza todas as sobrinhas após cada mudança
+            // Atualiza todas as sobrinhas e o tribunal após cada mudança
             atualizarSobrinhas();
         });
     });
 
-    // Atualiza as sobrinhas inicialmente
+    // Atualiza as sobrinhas e o tribunal inicialmente
     atualizarSobrinhas();
 }); 

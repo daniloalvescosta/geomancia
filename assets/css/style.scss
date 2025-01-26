@@ -58,8 +58,15 @@ body {
     width: 100%;
 }
 
+// Grupo do juiz
+.juiz {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 // Estilos comuns para todos os grupos
-.maes, .filhas, .sobrinhas, .tribunal {
+.maes, .filhas, .sobrinhas, .tribunal, .juiz {
     .sub-div {
         border: 1px solid #ccc;
         padding: 8px;
@@ -82,6 +89,6 @@ body {
     }
 }
 
-.filhas .linha, .sobrinhas .linha, .tribunal .linha {
+.filhas .linha, .sobrinhas .linha, .tribunal .linha, .juiz .linha {
     cursor: default;
 } 
