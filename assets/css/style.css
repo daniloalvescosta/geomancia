@@ -15,24 +15,23 @@ body {
 .content-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
   align-items: center;
-  max-width: 800px;
+  max-width: 600px;
   width: 100%;
 }
 
 .maes-filhas-container {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 15px;
   justify-content: center;
   width: 100%;
 }
 
 .maes, .filhas {
   display: flex;
-  flex-direction: row;
-  gap: 15px;
+  gap: 10px;
 }
 
 .sobrinhas {
@@ -45,8 +44,8 @@ body {
 .tribunal {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  width: 100%;
+  gap: 0;
+  width: fit-content;
 }
 
 .juiz {
@@ -57,8 +56,8 @@ body {
 
 .maes .sub-div, .filhas .sub-div, .sobrinhas .sub-div, .tribunal .sub-div, .juiz .sub-div {
   border: 1px solid #ccc;
-  padding: 8px;
-  width: 100px;
+  padding: 6px;
+  width: 80px;
 }
 .maes .sub-div .linha, .filhas .sub-div .linha, .sobrinhas .sub-div .linha, .tribunal .sub-div .linha, .juiz .sub-div .linha {
   padding: 3px;
