@@ -1,0 +1,87 @@
+// Variáveis SCSS
+$primary-color: #000;
+
+// Imports (se necessário)
+// @import 'components/nome-do-componente';
+
+// Estilos globais
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.site-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+.maes-filhas-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.maes, .filhas {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+// Grupo das sobrinhas
+.sobrinhas {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    width: fit-content;
+}
+
+// Grupo do tribunal
+.tribunal {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+// Estilos comuns para todos os grupos
+.maes, .filhas, .sobrinhas, .tribunal {
+    .sub-div {
+        border: 1px solid #ccc;
+        padding: 8px;
+        width: 100px;
+        
+        .linha {
+            padding: 3px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+}
+
+.maes .linha {
+    cursor: pointer;
+    &:hover {
+        background-color: #f0f0f0;
+    }
+}
+
+.filhas .linha, .sobrinhas .linha, .tribunal .linha {
+    cursor: default;
+} 
