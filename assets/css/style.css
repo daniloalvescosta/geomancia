@@ -7,9 +7,10 @@ body {
 .site-container {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding: 20px;
+  gap: 40px;
 }
 
 .content-container {
@@ -19,6 +20,8 @@ body {
   align-items: center;
   max-width: 600px;
   width: 100%;
+  margin: 40px;
+  margin-left: 80px;
 }
 
 .maes-filhas-container {
@@ -76,6 +79,29 @@ body {
 
 .filhas .linha, .sobrinhas .linha, .tribunal .linha, .juiz .linha {
   cursor: default;
+}
+
+.tabela-container {
+  position: fixed;
+  right: 350px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.tabela-container table {
+  border-collapse: collapse;
+  background-color: white;
+}
+.tabela-container table th, .tabela-container table td {
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  text-align: left;
+}
+.tabela-container table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+.tabela-container table td:nth-child(2), .tabela-container table td:nth-child(4) {
+  min-width: 100px;
 }
 
 /*# sourceMappingURL=style.css.map */

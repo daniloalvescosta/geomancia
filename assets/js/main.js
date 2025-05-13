@@ -1,4 +1,6 @@
 // Arquivo principal de JavaScript
+import { identificarFigura } from './figuras-geomanticas.js';
+
 document.addEventListener('DOMContentLoaded', function() {
     // Seleciona todas as linhas das mães
     const linhasMae = document.querySelectorAll('.maes .linha');
@@ -54,6 +56,58 @@ document.addEventListener('DOMContentLoaded', function() {
         atualizarJuiz();
     }
 
+    // Função para obter as linhas de uma figura
+    function obterLinhasFigura(id) {
+        const linhas = [];
+        document.querySelectorAll(`#${id} .linha`).forEach(linha => {
+            linhas.push(linha.textContent);
+        });
+        return linhas;
+    }
+
+    // Função para atualizar a tabela
+    function atualizarTabela() {
+        // Casas 1-6 (Mães 1-4 e Filhas 1-2)
+        const figuras1 = [
+            { id: 'mae-1', casa: 1 },
+            { id: 'mae-2', casa: 2 },
+            { id: 'mae-3', casa: 3 },
+            { id: 'mae-4', casa: 4 },
+            { id: 'filha-1', casa: 5 },
+            { id: 'filha-2', casa: 6 }
+        ];
+
+        // Casas 7-12 (Filhas 3-4 e Sobrinhas 1-4)
+        const figuras2 = [
+            { id: 'filha-3', casa: 7 },
+            { id: 'filha-4', casa: 8 },
+            { id: 'sobrinha-1', casa: 9 },
+            { id: 'sobrinha-2', casa: 10 },
+            { id: 'sobrinha-3', casa: 11 },
+            { id: 'sobrinha-4', casa: 12 }
+        ];
+
+        // Atualizar casas 1-6
+        figuras1.forEach(({ id, casa }) => {
+            const linhas = obterLinhasFigura(id);
+            const nomeFigura = identificarFigura(linhas);
+            const linha = document.querySelector(`tr:nth-child(${casa + 1})`); // +1 porque o primeiro tr é o cabeçalho
+            if (linha && nomeFigura) {
+                linha.children[1].textContent = nomeFigura;
+            }
+        });
+
+        // Atualizar casas 7-12
+        figuras2.forEach(({ id, casa }) => {
+            const linhas = obterLinhasFigura(id);
+            const nomeFigura = identificarFigura(linhas);
+            const linha = document.querySelector(`tr:nth-child(${casa - 6})`); // -6 para alinhar com as linhas da tabela
+            if (linha && nomeFigura) {
+                linha.children[3].textContent = nomeFigura;
+            }
+        });
+    }
+
     // Função para atualizar sobrinhas
     function atualizarSobrinhas() {
         // Sobrinha 1 (Mãe 1 e Mãe 2)
@@ -94,6 +148,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Atualiza o tribunal após atualizar as sobrinhas
         atualizarTribunal();
+
+        // Atualizar a tabela após atualizar as sobrinhas
+        atualizarTabela();
     }
 
     // Adiciona o evento de clique para cada linha das mães
